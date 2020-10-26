@@ -1,0 +1,146 @@
+<mat-card>
+    <mat-card-content>
+        <mat-toolbar class="expanded-toolbar">
+            <span class="fill-remaining-space">File New Expense</span>
+        </mat-toolbar>
+        <!-- <mat-label *ngIf="message!=''" class="message">{{message}}</mat-label> -->
+        <div class="container">
+            <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()" class="normal-form">
+                <mat-grid-list cols="2" rowHeight="2:1">
+                    <div class="controles-container">
+                        <input type="hidden" formControlName="expenseId">
+                        <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                <mat-label>Expense Name</mat-label>
+                                <mat-select formControlName="expenseType">
+                                    <mat-option *ngFor="let expenseType of expensesType" [value]="expenseType">
+                                        {{expenseType}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="expenseType?.errors && (expenseType?.dirty || expenseType?.touched)">
+                                    Please select the Expense
+                                    Name</mat-error>
+
+                            </mat-form-field>
+                        </mat-grid-title>
+                        <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                <mat-label>Transaction Date</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="transactionDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error
+                                    *ngIf="transactionDate.errors && (transactionDate.dirty || transactionDate.touched)">
+                                    Please select the Transaction Date
+                                </mat-error>
+                            </mat-form-field>
+                        </mat-grid-title>
+                        <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                <mat-label>Business Purpose</mat-label>
+                                <textarea matInput placeholder="Enter Business Purpose here"
+                                    formControlName="businessPurpose"></textarea>
+                                <mat-error
+                                    *ngIf="businessPurpose.errors && (businessPurpose.dirty || businessPurpose.touched)">
+                                    Please enter Business Purpose
+                                </mat-error>
+                            </mat-form-field>
+                        </mat-grid-title>
+                        <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                <mat-label>Vendor Name</mat-label>
+                                <input matInput placeholder="Enter vendor name here" formControlName="vendorName">
+                                <mat-error *ngIf="vendorName.errors && (vendorName.dirty || vendorName.touched)">Please
+                                    enter the Vendor Name
+                                </mat-error>
+                            </mat-form-field>
+                        </mat-grid-title>
+                        <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                <mat-label>Amount</mat-label>
+                                <input matInput placeholder="Enter Amount here" type="number" formControlName="amount">
+                                <mat-error *ngIf="amount.errors && (amount.dirty || amount.touched)">Please enter
+                                    the amount
+                                </mat-error>
+                            </mat-form-field>
+                        </mat-grid-title>
+                        <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                <mat-label>Payment Type</mat-label>
+                                <mat-select formControlName="paymentType">
+                                    <mat-option>None</mat-option>
+                                    <mat-option *ngFor="let paymentType of paymentsType" [value]="paymentType">
+                                        {{paymentType}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="paymentType?.errors && (paymentType?.dirty || paymentType?.touched)">
+                                    Please select the Payment
+                                    Type</mat-error>
+                            </mat-form-field>
+                        </mat-grid-title>
+                        <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                <mat-label>City</mat-label>
+                                <mat-select formControlName="city">
+                                    <mat-option>None</mat-option>
+                                    <mat-option *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="city?.errors && (city?.dirty || city?.touched)">Please select
+                                    the City
+                                </mat-error>
+                            </mat-form-field>
+                        </mat-grid-title>
+                        <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                <mat-label>Receipt Status</mat-label>
+                                <mat-select formControlName="receiptStatus">
+                                    <mat-option>None</mat-option>
+                                    <mat-option *ngFor="let receiptStatus of receiptsType" [value]="receiptStatus">
+                                        {{receiptStatus}}</mat-option>
+                                </mat-select>
+                                <mat-error
+                                    *ngIf="receiptStatus?.errors && (receiptStatus?.dirty || receiptStatus?.touched)">
+                                    Please select
+                                    the City
+                                </mat-error>
+                            </mat-form-field>
+                        </mat-grid-title>
+                        <!-- <mat-grid-title>
+                            <mat-form-field class="fullWidth">
+                                    <mat-label><mat-icon>attach_file</mat-icon>Attach Receipt</mat-label>
+                                <input matInput formControlName="fileAttr" readonly name="name" /> -->
+
+                                <!-- Browse Button -->
+                                <!-- <button mat-flat-button color="primary">
+                                    <mat-icon>attach_file</mat-icon>
+                                    Browse File
+                                </button> -->
+                                <!-- Fetch selected filed on change -->
+                                <!-- <input type="file" #fileInput id="uploadFile" (change)="uploadFileEvt($event)"
+                                    name="uploadFile" multiple="multiple" accept="image/*" /> -->
+                                <!-- Display files names -->
+                                <!-- <input matInput [(ngModel)]="fileAttr" readonly name="name" /> -->
+                                <!-- <input matInput formControlName="fileInput" (change)="uploadFileEvt($event)"
+                                    name="uploadFile" multiple="multiple" accept="image/*" /> -->
+                                <!-- Browse Button -->
+                                <!-- <button mat-flat-button color="primary"><mat-icon>attach_file</mat-icon>
+        Browse File
+      </button>-->
+                                <!-- Fetch selected filed on change -->
+                                <!-- <input type="file" #fileInput id="uploadFile" /> -->
+                            <!-- </mat-form-field>
+                        </mat-grid-title> -->
+                    </div>
+                </mat-grid-list>
+                <hr>
+                <div>
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="!expenseForm.valid">{{submitText}}
+                    </button>
+                    &nbsp;&nbsp;
+                    <button  mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

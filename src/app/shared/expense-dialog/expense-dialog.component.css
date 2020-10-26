@@ -1,0 +1,24 @@
+.fill-remaining-space {
+    flex: 1 1 auto;
+  }
+  
+.expanded-toolbar {
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+button, mat-flat-button{
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  
+.btn-dialog-close{
+      width: 45px;
+      min-width: 0px !important;
+      height: 40px;
+      padding: 0px !important;
+      margin:auto;
+    }
+    
+  
+  

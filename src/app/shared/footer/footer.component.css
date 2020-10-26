@@ -1,0 +1,17 @@
+/* .md-padding{
+    background-color: lightblue;
+    font-size: 14px;
+    margin-left: 5px;
+    width: 100%;
+    align-content: center;
+  } */
+
+.md-padding{
+  width: 100%;
+  /* height: 60px; */
+  background-color: blue;
+  font-size: 14px;
+  display: table;
+  
+
+}
